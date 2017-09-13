@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(tigerstats)
+require(tidyverse)
 data(m111surveyfa12)
 data(imagpop)
 ```
@@ -61,5 +62,12 @@ plot(density(size40means))
 
 ```{r}
 m111surveyfa13
+```
+
+# ggplot2 is the tidyverse plot tool
+
+```{r}
+ggplot(data = m111surveyfa12) +
+  geom_point(aes(x=height,y=sleep,col=sex))
 ```
 
