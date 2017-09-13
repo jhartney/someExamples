@@ -43,3 +43,17 @@ size2means[i] <-  mean(sample(imagpop$kkardashtemp,size=2))
 }
 plot(density(size2means))
 ```
+Now we show an iteration  techinique
+
+```{r}
+require(purrr)
+itlength=seq(1:1000)
+size40means=numeric()
+for (i in seq_along(itlength)){
+  size40means[i]= mean(sample(imagpop$kkardashtemp,size=40))
+}
+
+plot(density(size40means))
+
+```
+
