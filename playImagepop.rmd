@@ -40,7 +40,7 @@ plot(density(imagpop$kkardashtemp))
 ```{r}
 size2means=numeric()
 for (i in 1:1000){
-size2means[i] <-  mean(sample(imagpop$kkardashtemp,size=2))
+size2means[i] <-  mean(sample(imagpop$kkardashtemp,size=1000))
 }
 plot(density(size2means))
 ```
@@ -61,13 +61,21 @@ plot(density(size40means))
 # Homers addin for lattice graphics
 
 ```{r}
-m111surveyfa13
+bwplot(fastest ~ sex,
+	data = m111surveyfa13,
+	panel = function(..., box.ratio) {
+		panel.bwplot(..., fill = NULL, box.ratio = 0.1)
+		panel.violin(..., col = "burlywood", border = "grey60", alpha = 0.5, varwidth = FALSE)})
 ```
 
 # ggplot2 is the tidyverse plot tool
 
 ```{r}
 ggplot(data = m111surveyfa12) +
-  geom_point(aes(x=height,y=sleep,col=sex))
+  geom_boxplot(aes(x=sex,y=height,col=sex))
+```
+
+```{r}
+t.test(height~sex,data=m111surveyfa12)
 ```
 
